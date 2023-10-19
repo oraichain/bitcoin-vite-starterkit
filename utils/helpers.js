@@ -6,7 +6,6 @@ import { mnemonicToSeedSync } from 'bip39';
 import { fromSeed } from 'bip32';
 import moment from 'moment';
 import { decode } from 'bip21';
-import Url from 'url-parse';
 import { networks, availableCoins, defaultWalletShape } from '../utils/networks';
 import { getTransaction } from '../utils/electrum';
 
@@ -852,7 +851,7 @@ export const loginWithBitid = async ({ url = '', addressType = 'bech32', keyDeri
     //Check for signing error
     if (signMessageResponse.error) return { error: true, data: signMessageResponse.data };
     const { address, signature } = signMessageResponse.data;
-    const parsedURL = new Url(url);
+    const parsedURL = new URL(url);
     const response = await fetch(`https://${parsedURL.hostname}${parsedURL.pathname}`, fetchData('POST', { uri: url, address, signature }));
     const responseJson = await response.json();
     return { error: false, data: responseJson };
