@@ -1,0 +1,4 @@
+{
+  "bitcoin": [{ "host": "electrum.aantonop.com", "port": 60002 }],
+  "bitcoinTestnet": [{ "host": "electroncash.de", "port": 60004 }]
+}
